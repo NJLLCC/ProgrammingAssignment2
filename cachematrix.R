@@ -43,13 +43,11 @@ cacheSolve <- function(x, ...) {
     ## make sure that 'x' is invertible
     dataDim=attributes(data)$dim
     if(dataDim[1] != dataDim[2]){
-        message("Error: x must be a square matrix")
-        return(m)
+        stop("Error: x must be a square matrix")
     }
     else{
         if(det(data) == 0){
-            message("Error: x is an exactly singular matrix")
-            return(m)
+            stop("Error: x is an exactly singular matrix")
         }
         else{        
             m <- solve(data, ...)
